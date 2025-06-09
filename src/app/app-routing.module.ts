@@ -5,6 +5,10 @@ import { LoginComponent } from './Authentication/login/login.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: LoginComponent
+  },
+  {
     path: 'sign-up',
     component: SignUpComponent
   },
