@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResponseCls } from 'src/app/utilites/model/responseCls';
+import { AuthenticationService } from 'src/app/utilites/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder:FormBuilder,
-    private router:Router
+    private router:Router,
+    private authService:AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -39,13 +42,24 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    // debugger
-    // this.isSubmitted = true;
-    // if(this.loginForm.invalid)
-    // {
-    //   return;
-    // }
-    this.router.navigate(['/myUdhay'])
+    debugger
+    this.isSubmitted = true;
+    if(this.loginForm.invalid)
+    {
+      return;
+    }
+
+    this.authService.login(this.loginForm.value).subscribe((res:ResponseCls) => {
+      if(res.isSuccess)
+      {
+         this.router.navigate(['/myUdhay'])
+      }
+      else{
+         alert(res.statusMessage);
+        this.router.navigate(['/sign-up']);
+      }
+    })
+   
   }
 
   ngOnDestroy(): void {

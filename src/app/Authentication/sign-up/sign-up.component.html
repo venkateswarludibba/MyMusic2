@@ -12,10 +12,10 @@
                 </div>
       </div>
       <div class="input-box">
-        <input id="UserEmail" type="text" formControlName="UserEmail" placeholder="Email" />
+        <input id="UserEmail" type="text" formControlName="EmailID" placeholder="Email" />
         <i class="bx bxs-envelope"></i>
-         <div *ngIf="isSubmitted && frmsignup.UserEmail.errors" class="text-danger float-start txt-12">
-                     <div *ngIf="isSubmitted && frmsignup.UserEmail.errors.required">
+         <div *ngIf="isSubmitted && frmsignup.EmailID.errors" class="text-danger float-start txt-12">
+                     <div *ngIf="isSubmitted && frmsignup.EmailID.errors.required">
                            Please enter the user email
                      </div>
                 </div>

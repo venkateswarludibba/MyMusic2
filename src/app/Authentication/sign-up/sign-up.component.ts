@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ResponseCls } from 'src/app/utilites/model/responseCls';
+import { AuthenticationService } from 'src/app/utilites/services/authentication.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +22,9 @@ export class SignUpComponent implements OnInit {
   }
 
   constructor(
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private authService:AuthenticationService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -33,16 +38,30 @@ export class SignUpComponent implements OnInit {
   frmBuilder(){
     this.signupForm = this.formBuilder.group({
       UserName:['',Validators.required],
-      UserEmail:['',Validators.required],
+      EmailID:['',Validators.required],
       Password:['',Validators.required]
     })
   }
 
   signup(){
+    debugger
     this.isSubmitted=true;
     if(this.signupForm.invalid){
        return;
     }
+   debugger
+   this.authService.signUp(this.signupForm.value).subscribe((res:ResponseCls) => {
+    debugger
+      if(res.isSuccess)
+      {
+         alert('Successfully regestered!');
+         this.router.navigate(['/myUdhay']);
+      }
+      else{
+        alert(res.statusMessage);
+        this.router.navigate(['/login']);
+      }
+   })
   }
 
   ngOnDestroy(): void {
