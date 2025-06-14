@@ -1,0 +1,17 @@
+<div class="layout-container">
+  <!-- Toggle Button for Small Screens -->
+  <button class="menu-toggle" (click)="toggleSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <app-side-bar [collapsed]="sidebarCollapsed"></app-side-bar>
+
+  <!-- Main Section -->
+  <div class="main-section" [class.shifted]="!sidebarCollapsed">
+   <div [class.header-container]="sidebarCollapsed" [class.shifted]="!sidebarCollapsed">
+  <app-header></app-header>
+</div>
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

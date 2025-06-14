@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path:'myUdhay',
+    loadChildren:() => import('./layout/loayout.module').then(m => m.LoayoutModule)
   }
 ];
 

@@ -1,0 +1,35 @@
+<nav class="sidebar" [class.collapsed]="collapsed">
+  <div class="brand">
+    <span class="logo"><i class="bx  bx-music"></i> Music</span>
+    <hr class="divider" />
+  </div>
+
+  <ul class="nav-links">
+    <li routerLinkActive="active">
+      <a routerLink="/dashboard">
+        <i class='bx bxs-dashboard icon'></i> 
+        <span class="text">Dashboard</span>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/profile">
+        <i class='fa fa-volume-up icon'></i>
+        <span class="text">Songs</span>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/settings">
+        <span class="icon">⚙️</span>
+        <span class="text">Settings</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/logout">
+        <span class="icon">🚪</span>
+        <span class="text">Logout</span>
+      </a>
+    </li>
+  </ul>
+
+  <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+</nav>

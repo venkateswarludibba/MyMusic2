@@ -1,66 +1,45 @@
-<!-- <div class="row mt-5">
-  <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3">
-    <div class="card auth">
-      <div class="card-body auth-card">
-        <div class="auth-avatar">
-          <img src="https://pluspng.com/img-png/user-png-icon-account-avatar-human-male-man-men-people-person-download-svg-download-png-edit-icon-512.png" alt="user" class="user-image">
-        </div>
-        <form >
-          <div class="form-group">
-            <label for="email">Email : </label>
-            <input type="text" name="email" class="form-control" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="password">Password : </label>
-            <input type="password" name="password" class="form-control" placeholder="********">
-            <div class="text-right forget-pass">
-              <a routerLink="/forget-password">Forget Password ?</a>
-            </div>
-          </div>
-          <div class="text-center">
-            <input type="submit" class="btn btn-my" value="Login">
-          </div>
-        </form>
-        <div class="text-center sign-up">
-          Don`t have an account ? <a routerLink="/sign-up">Sign Up</a> hera.
-        </div>
-        
-        
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="container">
     <div class="form-box login">
-           <form>
-              <h1>Login</h1>
-              <div class="input-box">
-                 <input type="text" placeholder="Username" />
-                 <i class="bx bxs-user"></i>
-              </div>
-              <div class="input-box">
-                <input type="password" placeholder="Password"/>
+        <form [formGroup]="loginForm">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" formControlName="UserName" placeholder="Username" 
+                />
+                <i class="bx bxs-user"></i>
+                <div *ngIf="isSubmitted && lginForm.UserName.errors" class="text-danger float-start txt-12">
+                     <div *ngIf="isSubmitted && lginForm.UserName.errors.required">
+                           Please enter the username
+                     </div>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="password" formControlName="Password" placeholder="Password" />
                 <i class="bx bxs-lock-alt"></i>
-              </div>
-              <div class="forgot-link">
-                   <a href="#">Forgot Password</a>    
-              </div>
-              <button type="submit" class="btn">Login</button>
-              <p>or login with social platform</p>
-              <div class="social-icons">
-                 <a ><i class="bx bxl-google text-warning"></i></a>
-                  <a ><i class="bx bxl-facebook" style="color: rgb(64, 107, 248);"></i></a>
-                   <a ><i class="bx bxl-github "></i></a>
-                    <a ><i class="bx bxl-linkedin" style="color: rgb(19, 57, 182);"></i></a>
-              </div>
-           </form>
+                <div *ngIf="isSubmitted && lginForm.Password.errors" class="text-danger float-start txt-12">
+                     <div *ngIf="isSubmitted && lginForm.Password.errors.required">
+                           Please enter the password
+                     </div>
+                </div>
+            </div>
+            <div class="forgot-link">
+                <a href="#">Forgot Password</a>
+            </div>
+            <button (click)="login()" class="btn">Login</button>
+            <p>or login with social platform</p>
+            <div class="social-icons">
+                <a><i class="bx bxl-google text-warning"></i></a>
+                <a><i class="bx bxl-facebook" style="color: rgb(64, 107, 248);"></i></a>
+                <a><i class="bx bxl-github "></i></a>
+                <a><i class="bx bxl-linkedin" style="color: rgb(19, 57, 182);"></i></a>
+            </div>
+        </form>
     </div>
 
     <div class="toggle-box">
         <div class="toggle-pannel toggle-left">
-          <h1>Hello, Welcome</h1>
-          <p>Don't have an account</p>
-          <button class="btn register-btn" routerLink="/sign-up">Register</button>
+            <h1>Hello, Welcome</h1>
+            <p>Don't have an account</p>
+            <button class="btn register-btn" routerLink="/sign-up">Register</button>
         </div>
     </div>
 </div>
